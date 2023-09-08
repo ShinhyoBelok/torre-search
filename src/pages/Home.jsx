@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getEntities, cleanState } from '../redux/entities/entities';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +11,6 @@ export default function Home() {
 
   // debounce to avoid multiple request when user is typing fast
   const debouncedHandleChange = debounce((value) => {
-    console.log('request');
     dispatch(getEntities(value));
   }, 200);
 

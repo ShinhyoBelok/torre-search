@@ -14,26 +14,34 @@ export default function Entity(props) {
 
   const entities = useSelector((state) => state.entities);
 
-  const addEntitylocalStorage = (ent) => {
-    const existingArray = JSON.parse(localStorage.getItem('savedList')) || [];
-    existingArray.push(ent);
-    localStorage.setItem('savedList', JSON.stringify(existingArray));
-  }
+  const toggleSave = (e) => {
+    const savedEntities = JSON.parse(localStorage.getItem('savedList')) || [];
 
-  const saveEntity = (e) => {
     e.preventDefault();
-    const { id } = e.target
-    const newEntity = entities.find(ent => ent.ggId == id);
-    addEntitylocalStorage(newEntity);
+    const { id } = e.target;
+    const newEntity = entities.find((ent) => ent.ggId == id);
+    console.log(id);
+    console.log(savedEntities);
+    if (savedEntities.find((ent) => ent.ggId == id)) {
+      const updatedEntities = savedEntities.filter((ent) => ent.ggId != id);
+      localStorage.setItem('savedList', JSON.stringify(updatedEntities));
+      const path = window.location.pathname;
+      if (path == '/SavedUsers') {
+        window.location.reload();
+      }
+    } else {
+      localStorage.setItem('savedList', JSON.stringify([...savedEntities, newEntity]));
+    }
   }
-
+  
   return (
     <a href={`https://torre.ai/${username}`} target="_blank">
       <div>
-        <img src={imageUrl} alt="Profile Pic" />
+        <img src={imageUrl || 'https://img.icons8.com/color/96/gender-neutral-user.png'} alt="Profile Pic" />
         <div>{name}</div>
-        <div>{professionalHeadline}</div>
-        <button id={ggId} onClick={saveEntity}>Save <AiOutlineSave /></button>
+        <div>{professionalHeadline || "No professional headline found"}</div>
+        <button id={ggId} onClick={toggleSave}>Save</button>
+        <AiOutlineSave />
       </div>
     </a>
   )
@@ -41,7 +49,8 @@ export default function Entity(props) {
 
 Entity.propTypes = {
   name: string.isRequired,
-  professionalHeadline: string.isRequired,
+  professionalHeadline: string,
   ggId: string.isRequired,
-  username: string.isRequired
+  username: string.isRequired,
+  imageUrl: string
 }

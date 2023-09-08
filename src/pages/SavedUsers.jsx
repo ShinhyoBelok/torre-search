@@ -15,7 +15,7 @@ export default function SavedUsers() {
   return (
     <div>
       <ul>
-        {
+        {entitiesSaved.length > 0 ? (
           entitiesSaved.map((entity) => (
             <Entity
               key={uuidv4()}
@@ -26,8 +26,10 @@ export default function SavedUsers() {
               imageUrl={entity.imageUrl}
             />
           ))
-        }
+        ) : (
+          <li>No saved entities found.</li>
+        )}
       </ul>
     </div>
-  )
+  );
 }
