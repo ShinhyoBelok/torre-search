@@ -1,5 +1,29 @@
 .home_container {
   align-self: center;
   justify-content: center;
-  margin-top: 10vh;
+  align-items: center;
+  padding-top: 10vh;
+  flex-direction: column;
+}
+
+.search_input {
+  width: 65vw;
+  background-color: rgb(29, 29, 36);
+  padding: 1rem;
+  color: aquamarine;
+  border: solid;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.search_input::placeholder {
+  color:  rgb(126, 226, 193);
+  font-size: 1rem;
+}
+
+.entity_container {
+  width: 65vw;
+  background-color: gray;
+  overflow-y: scroll;
+  max-height: 70vh;
 }

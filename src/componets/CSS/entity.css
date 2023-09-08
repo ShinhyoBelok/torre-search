@@ -1,0 +1,34 @@
+.entity_card {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 10px;
+  color: white;
+}
+
+.entity_card img {
+  width: 40px;
+  border-radius: 20px;
+  margin: 4px;
+  margin-bottom: 0;
+  margin-right: 8px;
+}
+
+.info {
+  align-items: center;
+}
+
+.headline {
+  font-size: small;
+  color: rgba(255, 255, 255, 0.815);
+}
+
+.save {
+  align-items: center;
+}
+
+.save button {
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.4rem;
+}

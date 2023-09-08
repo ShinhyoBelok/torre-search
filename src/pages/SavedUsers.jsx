@@ -3,6 +3,7 @@ import Entity from '../componets/Entity'
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import './CSS/savedUsers.css'
 
 export default function SavedUsers() {
   const [entitiesSaved, setEntitiesSaved] = useState([])
@@ -14,7 +15,7 @@ export default function SavedUsers() {
 
   return (
     <div>
-      <ul>
+      <ul className='savedUsers_ul d-flex'>
         {entitiesSaved.length > 0 ? (
           entitiesSaved.map((entity) => (
             <Entity
@@ -24,6 +25,7 @@ export default function SavedUsers() {
               ggId={entity.ggId}
               username={entity.username}
               imageUrl={entity.imageUrl}
+              btn={'Remove'}
             />
           ))
         ) : (

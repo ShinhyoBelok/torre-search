@@ -24,20 +24,25 @@ export default function Home() {
   }
 
   return (
-    <div className='home_container d-flex'>
-      <input type="search" placeholder="Search people by name" onChange={handleChange} onFocus={handleChange}/>
-      {
-        entities.map((entity) => (
-          <Entity
-            key={uuidv4()}
-            name={entity.name}
-            professionalHeadline={entity.professionalHeadline}
-            ggId={entity.ggId}
-            username={entity.username}
-            imageUrl={entity.imageUrl}
-          />
-        ))
-      }
+    <div className='home_container d-flex' onClick={hideEntities}>
+      <div className="input_container" onClick={(e) => e.stopPropagation()}>
+        <input type="search" placeholder="Search people by name" className='search_input' onChange={handleChange} onFocus={handleChange}/>
+        <div className="entity_container">
+          {
+            entities.map((entity) => (
+              <Entity
+                key={uuidv4()}
+                name={entity.name}
+                professionalHeadline={entity.professionalHeadline}
+                ggId={entity.ggId}
+                username={entity.username}
+                imageUrl={entity.imageUrl}
+                btn={'Save'}
+              />
+            ))
+          }
+        </div>
+      </div>
     </div>
   )
 }

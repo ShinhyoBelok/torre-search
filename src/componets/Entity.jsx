@@ -1,7 +1,8 @@
 import React  from 'react'
 import { useSelector  } from 'react-redux'
 import { string } from 'prop-types';
-import { AiOutlineSave } from 'react-icons/ai';
+import { AiOutlineSave, AiFillDelete } from 'react-icons/ai';
+import './CSS/entity.css'
 
 export default function Entity(props) {
   const {
@@ -9,7 +10,8 @@ export default function Entity(props) {
     professionalHeadline,
     ggId,
     username,
-    imageUrl
+    imageUrl,
+    btn
   } = props;
 
   const entities = useSelector((state) => state.entities);
@@ -35,13 +37,17 @@ export default function Entity(props) {
   }
   
   return (
-    <a href={`https://torre.ai/${username}`} target="_blank">
-      <div>
+    <a href={`https://torre.ai/${username}`} className='entity_card d-flex' target="_blank">
+      <div className="info d-flex">
         <img src={imageUrl || 'https://img.icons8.com/color/96/gender-neutral-user.png'} alt="Profile Pic" />
-        <div>{name}</div>
-        <div>{professionalHeadline || "No professional headline found"}</div>
-        <button id={ggId} onClick={toggleSave}>Save</button>
-        <AiOutlineSave />
+        <div>
+          <div>{name}</div>
+          <div className='headline'>{professionalHeadline || "No professional headline found"}</div>
+        </div>
+      </div>
+      <div className="save d-flex">
+        <button id={ggId} onClick={toggleSave}>{btn}</button>
+        {btn == 'Remove' ? <AiFillDelete /> : <AiOutlineSave />}
       </div>
     </a>
   )
@@ -52,5 +58,6 @@ Entity.propTypes = {
   professionalHeadline: string,
   ggId: string.isRequired,
   username: string.isRequired,
-  imageUrl: string
+  imageUrl: string,
+  btn: string.isRequired
 }
