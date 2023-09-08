@@ -26,19 +26,22 @@ export const getEntities = createAsyncThunk(
         },
         data: dataReq
       });
+      let respondData = [];
+      const res = await respond.data;
 
-      const dataAsString = await respond.data;
-      const dataArray = dataAsString.match(/\{[^}]*\}/g);
-      const respondData = [];
-
-      dataArray.forEach(data => {
-        const parseData = JSON.parse(data);
-        respondData.push(parseData);
-      });
+      if (typeof res == 'string') {
+        const dataArray = res.match(/\{[^}]*\}/g);
+        dataArray.forEach(data => {
+          const parseData = JSON.parse(data);
+          respondData.push(parseData);
+        });
+      } else if (typeof res == 'object') {
+        respondData = [res];
+      }
 
       return respondData;
     } catch (error) {
-      console.log('error' + error.message);
+      console.log('error ' + error.message);
       throw new Error(`Error fetching data: ${error.message}`);
     }
   }

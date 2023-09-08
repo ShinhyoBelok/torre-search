@@ -18,13 +18,14 @@ export default function Home() {
 
   return (
     <div>
-      <input type="search" placeholder="Search people by name" onChange={handleChange} onFocus={handleChange} onBlur={hideEntities}/>
+      <input type="search" placeholder="Search people by name" onChange={handleChange} onFocus={handleChange}/>
       {
         entities.map((entity) => (
           <Entity
             key={uuidv4()}
             name={entity.name}
             professionalHeadline={entity.professionalHeadline}
+            ggId={entity.ggId}
           />
         ))
       }
