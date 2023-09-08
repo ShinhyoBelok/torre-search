@@ -4,7 +4,6 @@ import entitiesReducer from './entities/entities';
 const store = configureStore({
   reducer: {
     entities: entitiesReducer,
-    // savedEntities:
   },
 });
 
