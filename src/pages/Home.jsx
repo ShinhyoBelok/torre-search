@@ -4,6 +4,7 @@ import { getEntities, cleanState } from '../redux/entities/entities';
 import { v4 as uuidv4 } from 'uuid';
 import { debounce } from 'lodash'
 import Entity from '../componets/Entity';
+import './CSS/home.css';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className='home_container d-flex'>
       <input type="search" placeholder="Search people by name" onChange={handleChange} onFocus={handleChange}/>
       {
         entities.map((entity) => (

@@ -1,0 +1,21 @@
+nav {
+  margin-top: 30px;
+  justify-content: space-around;
+  border-bottom: 3px solid aquamarine;
+}
+
+a {
+  text-decoration: none;
+  color: aquamarine;
+}
+
+.link {
+  padding: 0.3rem 1.3rem;
+}
+
+.active-link {
+  background-color: aquamarine;
+  color:  rgb(29, 29, 36);
+  font-weight: 800;
+  border-radius: 10px 10px 0 0;
+}

@@ -1,0 +1,21 @@
+/* General css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+body {
+  height: 100%;
+  background-color: rgb(29, 29, 36);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+}
+
+.d-flex {
+  display: flex;
+}
+
+#root {
+  width: 100%;
+}
+
+navlink {
+  text-decoration: none;
+}
