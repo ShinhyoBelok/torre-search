@@ -3,9 +3,9 @@ import axios from 'axios';
 import { entitiesApiUrl } from '../../../serverdev';
 
 
-export const getEntities = createAsyncThunk(
-  'entities/getEntities',
-  async (inputQuery) => {
+export const getSavedEntities = createAsyncThunk(
+  'savedEntities/getSavedEntities',
+  async (savedEnt) => {
     const dataReq = {
       excludeContacts: true,
       excludedPeople: [],
@@ -16,6 +16,9 @@ export const getEntities = createAsyncThunk(
       torreGgId: "",
     }
 
+    savedEnt.forEach(ent => {
+      
+    });
     
     try {
       const respond = await axios({
@@ -45,10 +48,10 @@ export const getEntities = createAsyncThunk(
 );
 
 const entitiesSlice = createSlice({
-  name: 'entities',
+  name: 'savedEntities',
   initialState: [],
   reducers: {
-    cleanState(state, action) {
+    saveEntities(state, action) {
       return [];
     }
   },

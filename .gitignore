@@ -1,6 +1,7 @@
 #Enviroments variables
 .env.development
 .env.production
+serverdev.js
 
 # Logs
 logs
