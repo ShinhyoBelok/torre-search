@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import { cleanState } from '../redux/entities/entities';
+
 import './CSS/navbar.css';
 
 export default function Navbar() {
   const location = useLocation();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isSavedUsersActive, setIsSavedUsersActive] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const path = location.pathname;
@@ -21,6 +25,10 @@ export default function Navbar() {
     }
   }, [location.pathname]);
 
+  const hideEntities = () => {
+    dispatch(cleanState());
+  }
+
   return (
     <nav className='d-flex'>
       <NavLink
@@ -33,6 +41,7 @@ export default function Navbar() {
       <NavLink
         to="/SavedUsers"
         className={`link ${isSavedUsersActive ? 'active-link' : ''}`}
+        onClick={hideEntities}
       >
         Saved users
       </NavLink>

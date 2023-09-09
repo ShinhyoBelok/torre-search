@@ -30,10 +30,15 @@
 .save button {
   border: none;
   border-radius: 0.3rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.4rem 0.6rem;
 }
 
-button:active {
+.saved_btn {
   background-color: #0056b3;
-  color: #ffffff;
+  color: #fff;
+}
+
+.btn_remove {
+  background-color: rgb(255, 47, 47);
+  color: white;
 }

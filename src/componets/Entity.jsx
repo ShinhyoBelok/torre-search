@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useState }  from 'react'
 import { useSelector  } from 'react-redux'
 import { string } from 'prop-types';
 import { AiOutlineSave, AiFillDelete } from 'react-icons/ai';
@@ -15,11 +15,16 @@ export default function Entity(props) {
   } = props;
 
   const entities = useSelector((state) => state.entities);
+  const [isSaved, setIsSaved] = useState(btn == 'Saved' ? true : false);
 
   const toggleSave = (e) => {
-    const savedEntities = JSON.parse(localStorage.getItem('savedList')) || [];
-
     e.preventDefault();
+    if (isSaved) {
+      setIsSaved(false);
+    } else {
+      setIsSaved(true);
+    }
+    const savedEntities = JSON.parse(localStorage.getItem('savedList')) || [];
     const { id } = e.target;
     const newEntity = entities.find((ent) => ent.ggId == id);
 
@@ -42,8 +47,8 @@ export default function Entity(props) {
         </div>
       </div>
       <div className="save d-flex">
-        <button id={ggId} onClick={toggleSave}>{btn}</button>
-        {btn == 'Remove' ? <AiFillDelete /> : <AiOutlineSave />}
+        {btn == 'Remove' ? <button id={ggId} onClick={toggleSave} className='btn_remove'>Remove</button> : <button id={ggId} onClick={toggleSave} className={`${isSaved ? 'saved_btn' : ''}`}>{`${isSaved ? 'Saved' : 'Save'}`}</button> }
+        {btn == 'Saved' || btn == 'Save' ? <AiOutlineSave /> : <AiFillDelete /> }
       </div>
     </a>
   )

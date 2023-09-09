@@ -9,7 +9,6 @@ export default function SavedUsers() {
   const [entitiesSaved, setEntitiesSaved] = useState([])
 
   window.addEventListener('storage', (event) => {
-    console.log('Storage event detected:', event);
     const storedItems = JSON.parse(localStorage.getItem('savedList')) || [];
     setEntitiesSaved(storedItems);
   });
