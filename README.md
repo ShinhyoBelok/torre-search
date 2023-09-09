@@ -55,7 +55,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[Live demo](https://crypto-currencies-shinhyobelok.netlify.app/)
+[Live demo](https://torresearch.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
