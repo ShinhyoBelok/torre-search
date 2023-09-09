@@ -22,15 +22,11 @@ export default function Entity(props) {
     e.preventDefault();
     const { id } = e.target;
     const newEntity = entities.find((ent) => ent.ggId == id);
-    console.log(id);
-    console.log(savedEntities);
+
     if (savedEntities.find((ent) => ent.ggId == id)) {
       const updatedEntities = savedEntities.filter((ent) => ent.ggId != id);
       localStorage.setItem('savedList', JSON.stringify(updatedEntities));
-      const path = window.location.pathname;
-      if (path == '/SavedUsers') {
-        window.location.reload();
-      }
+      window.dispatchEvent(new Event('storage'))
     } else {
       localStorage.setItem('savedList', JSON.stringify([...savedEntities, newEntity]));
     }
