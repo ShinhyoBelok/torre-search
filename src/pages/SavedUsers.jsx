@@ -29,7 +29,7 @@ export default function SavedUsers() {
             />
           ))
         ) : (
-          <li>No saved entities found.</li>
+          <span className='no_files'>No saved entities found.</span>
         )}
       </ul>
     </div>

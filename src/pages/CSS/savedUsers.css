@@ -11,6 +11,11 @@
   margin-bottom: 0;
 }
 
+.no_files {
+  color: white;
+  align-self: center;
+}
+
 @media (max-width: 700px) {
   .savedUsers_ul {
     padding: 0;
