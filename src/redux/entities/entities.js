@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { entitiesApiUrl } from '../../../serverdev';
-
+import entitiesApiUrl from '../../../server';
 
 export const getEntities = createAsyncThunk(
   'entities/getEntities',
