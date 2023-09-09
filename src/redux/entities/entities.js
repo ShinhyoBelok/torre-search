@@ -51,7 +51,7 @@ const entitiesSlice = createSlice({
   name: 'entities',
   initialState: [],
   reducers: {
-    cleanState(state, action) {
+    cleanState(state, action) { // eslint-disable-line
       return [];
     }
   },
